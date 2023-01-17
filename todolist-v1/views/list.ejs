@@ -1,0 +1,38 @@
+<%- include("header") -%>
+    <!--<h1>It's a <%= kindOfDay%></h1>-->
+    <!-- <% %> these are ejs tags should be put for non html lines only and for any html lines it is not need -->
+    <!-- it is also called as scriplet tag, used for control-flow, no output -->
+    <div class="box" id="heading">
+        <h1><%=kindOfDay%></h1>
+
+    </div>
+    
+    <!-- <% if(kindOfDay==="Sunday" || kindOfDay==="Saturday"){%>
+         here it is a html line so need of that ejs tag  -->
+        <!-- <h1 style="color: purple">today is <%=kindOfDay%></h1>
+    <%}else{%>
+        <h1 style="color: red">today is <%=kindOfDay%></h1> -->
+    <!-- <%}%> --> 
+
+    <div class="box">
+        <%for(var i=0;i<works.length;i++){%>
+            <div class="item">
+                <input type="checkbox">
+                <p>
+                    <%=works[i]%>
+                </p>
+            </div>
+            
+        <%}%>
+
+        <form class="item" action="/" method="post">
+            <input type="text" placeholder="New Item" name="work" autocomplete="off">
+            <!-- here autocomplete is made off so user will not get any suggestion while giving input  -->
+            <button type="submit" name="list" value=<%= kindOfDay%>>+</button>
+        </form>
+
+    </div>
+    
+<%- include("footer") -%>
+
+    

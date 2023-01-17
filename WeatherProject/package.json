@@ -1,0 +1,14 @@
+{
+  "name": "weatherproject",
+  "version": "1.0.0",
+  "description": "Displaying weather of cities based on request",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vishwa-s-a",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

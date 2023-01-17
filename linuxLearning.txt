@@ -1,0 +1,24 @@
+* here we have installed nodemon globally by giving -g tag command used was: sudo npm install -g nodemon
+* so when ever we need nodemon in a certain project we just have to create a symbolic link to the target directory (or) simply again install in that project by using 
+  npm install nodemon express body-parser. like this we can install all these modules for each and every project so that we get them in dependencies list of package.json
+  
+  * this is the command for creating symbolic link to the target directory(in most case not needed)
+    example:sudo ln -s /home/vishwa/webDev/WeatherProject /usr/local/lib/node_modules/nodemon
+    here the basic syntax is sudo ln -s /target/  /where/nodemon/is/installed
+* the command to get version of body-parser module is npm --version body-parser. NO THIS WILL GIVE VERSION OF NPM AND NOT BODY-PARSER
+* to remove a certain file from staging area of git
+  git rm --cached file.name
+* to remove a certain folder from staging area of git
+   git rm -r --cached folder_name
+* to see all files in stating area of git
+  git ls-files
+* to see all hidden files and normal files in a folder
+  ls -a
+* to see all normal files in a folder
+  ls -l 
+* npm install
+  after downloading starting files for a project, we check all dependencies from package.json and after that we give this command, which will install all the dependencies
+  required for that project and of the same version. So that we dont have to install all packages separately
+  if some vulnerabilities are there then run these commands 
+  * npm audit
+  * npm audit fix --force

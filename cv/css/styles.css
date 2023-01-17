@@ -1,0 +1,46 @@
+/****************************tag selectors*******************************/
+body {
+    background-color:powderblue;
+}
+hr {
+    border-style:none;
+    border-top-style: dotted;
+    border-color: grey;
+    width:10%;
+    border-width: 5px;
+}
+h1 {
+    color: #66BFBF;
+}
+h3{
+    color: #66BFBF;
+}
+img:hover{
+    background-color: gold;
+}
+/* these lines upply the same color to all img item but if we want to apply different color
+to different image then we use selectors
+
+*/
+/*******************************Class selectors*******************************/
+/*
+this is how we write multi line comments
+below this we will demonstrate the use of selectors and class
+for that activity we use .class_name as given as attribute for different items
+*/
+.broccoli{
+    background-color: red;
+}
+.becon{
+    background-color: green;
+}
+.circular{
+    border-radius:100%;
+}
+/***************************ID selectors****************************************/
+/*
+here it starts with #
+*/
+#heading{
+    color:peru;
+}
