@@ -1,0 +1,25 @@
+<%- include("header") -%>
+
+  <div class="box" id="heading">
+    <h1> <%= listTitle %> </h1>
+  </div>
+
+  <div class="box">
+    <%newListItems.forEach(function(item){ %>
+      <form action="/delete" method="post">
+        <div class="item">
+          <!-- here in this below input tag 'checkbox' is variable name and its value is set by 'item_id'
+               mainly added as we need to know the id of the item that is checked and should be deleted -->
+          <input type="checkbox" name="checkbox" value="<%=item._id%>" onChange="this.form.submit()"><!-- here when ever a change happens in check box the form gets submitted -->
+          <p><%=item.name%></p>
+        </div>
+      </form>
+      <% }); %>
+
+      <form class="item" action="/" method="post">
+        <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+        <button type="submit" name="list">+</button>
+      </form>
+  </div>
+
+<%- include("footer") -%>

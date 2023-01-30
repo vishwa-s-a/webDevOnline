@@ -1,0 +1,25 @@
+1)
+instead of using the hard coded route name we use this
+we use Express Route Parameters to get dynamic routes
+snippet for this is
+app.get("/category/:<paramName>",function(req,res){
+    //Access req.params.paramName
+});
+
+2)
+To find whether that particular item exist in db or not
+we use Mongoose findOne() method
+code snippet for the same
+<ModelName>.findOne({conditions},function(err,results){
+    //use the found results docs.
+});
+
+3)
+to drop a complete db we use
+first go to that db then
+db.dropDatabase()
+
+4)
+to drop the data present in a particular collection
+first go to that db then
+db.<listName>.drop()
