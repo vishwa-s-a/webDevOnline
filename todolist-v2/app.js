@@ -3,6 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose=require("mongoose");
+const _=require("lodash");
 
 const app = express();
 
@@ -66,7 +67,7 @@ app.get("/", function(req, res) {
 });
 //custom routing solution
 app.get("/:customListName",function(req,res){
-  const customListName=req.params.customListName;
+  const customListName=_.capitalize(req.params.customListName);
   List.findOne({name:customListName},function(err,foundList){
     if(!err){
       if(!foundList){
@@ -93,12 +94,25 @@ app.get("/:customListName",function(req,res){
 app.post("/", function(req, res){
   // now we will save the items in db
   const itemName = req.body.newItem;
+  const listName=req.body.list; 
+
   const item=new Item({
     name:itemName
   });
-  item.save();
 
-  res.redirect("/");//so we again render the page and display the contents of db
+  if(listName==="Today"){
+    item.save();
+    res.redirect("/");//so we again render the page and display the contents of db
+  }
+  else{
+    // now we will find which object has this name and found means we will add the item
+    List.findOne({name:listName},function(err,foundList){
+      foundList.items.push(item);// here we are just adding the item to array of items present in List collection
+      foundList.save();
+      res.redirect("/"+listName);
+    })
+  }
+  
 });
 
 app.get("/work", function(req,res){
@@ -108,9 +122,13 @@ app.get("/work", function(req,res){
 app.post("/delete",function(req,res){
   //console.log(req.body.checkbox);
   const checkedItemId=req.body.checkbox;
+  const listName=req.body.listName;// this is obtained from the hidden input tag
+  // and indicates the list name where we doing delete operation
 
-  // now to remove that object using mongoose's findByIdAndRemove() method
-  Item.findByIdAndRemove(checkedItemId,function(err){
+  if(listName==="Today")
+  {
+    // now to remove that object using mongoose's findByIdAndRemove() method
+    Item.findByIdAndRemove(checkedItemId,function(err){
     if(err)
     {
       console.log(err);
@@ -118,10 +136,17 @@ app.post("/delete",function(req,res){
     else{
       console.log("Successfully removed "+checkedItemId);
     }
-  });
-  res.redirect("/");
-
-})
+    });
+    res.redirect("/");
+  }
+  else{
+    List.findOneAndUpdate({name:listName},{$pull:{items:{_id:checkedItemId}}},function(err,foundList){
+      if(!err){
+        res.redirect("/"+listName);
+      }
+    })
+  }
+});
 
 app.get("/about", function(req, res){
   res.render("about");

@@ -23,3 +23,15 @@ db.dropDatabase()
 to drop the data present in a particular collection
 first go to that db then
 db.<listName>.drop()
+
+5)
+Mongoose findOneAndUpdate() method
+<ModelName>.findOneAndUpdate({conditions},{updates},function(err,results){});
+
+here updates will be{$pull:{field:{query}}}
+query will be '_id:value'
+field will take a array
+query will take a array element which has to be searched in the given array
+
+6)
+using lodash we will capitalize the name of route entered dynamically by the user
