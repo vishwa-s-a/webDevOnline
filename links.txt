@@ -1,0 +1,9 @@
+1).
+here render is used for this webservice and mongoDB atlas is used for database
+link to todolist-v2-nodejs:
+https://todolist-v2-nodejs-2.onrender.com/
+
+2).
+here cyclic.sh is used for putting this page on internet
+link to sign-up page(where mail-chimp api is used):
+https://poncho-eagle.cyclic.app/
